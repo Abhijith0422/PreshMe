@@ -1,30 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:preshme/features/home/widgets/home_skillcard.dart';
+
+import '../../../shared/providers/flipped_card_provider.dart';
 
 class HomeCardswipe extends StatelessWidget {
   final CardSwiperController controller;
-   HomeCardswipe({super.key, required this.controller});
+  final WidgetRef ref;
+   HomeCardswipe({super.key, required this.controller, required this.ref});
 
-final List<HomeSkillcard> cards = [
-     const HomeSkillcard(
-    name: "Abhi",
-    role: "Flutter Developer",
+late final flippedIndex =
+    ref.watch(flippedCardProvider);   
+late final List<HomeSkillcard> cards = [
+     HomeSkillcard(
+  name: "Abhi",
 
-    image: "assets/homepage/avatar.png",
+  role: "Flutter Developer",
 
-    skills: [
-      "Flutter",
-      "Firebase",
-      "UI/UX",
-    ],
+  image: "assets/homepage/avatar.png",
 
-    lookingFor:
-        "Backend Developer • Collaborator",
-  ),
+  skills: [
+    "Flutter",
+    "Firebase",
+    "UI/UX",
+  ],
 
-  const HomeSkillcard(
+  lookingFor:
+      "Backend Developer • Collaborator",
+
+  isFlipped: flippedIndex == 0,
+
+  onTap: () {
+    ref
+        .read(
+          flippedCardProvider.notifier,
+        )
+        .state =
+            flippedIndex == 0 ? -1 : 0;
+  },
+),
+
+  HomeSkillcard(
     name: "Aryan",
+
     role: "AI Engineer",
 
     image: "assets/homepage/avatar.png",
@@ -37,7 +56,21 @@ final List<HomeSkillcard> cards = [
 
     lookingFor:
         "Frontend Developer • Startup Team",
+
+    isFlipped: flippedIndex == 1,
+
+    onTap: () {
+      ref
+          .read(
+            flippedCardProvider.notifier,
+          )
+          .state =
+              flippedIndex == 1
+                  ? -1
+                  : 1;
+    },
   ),
+
   ];
   
   
@@ -49,6 +82,7 @@ final List<HomeSkillcard> cards = [
       child: CardSwiper(
         controller: controller,
         cardsCount: cards.length,
+        isDisabled: flippedIndex != -1,
         cardBuilder: (context, index, percentThresholdX, percentThresholdY) => Center(child: cards[index]),
       ),
     );

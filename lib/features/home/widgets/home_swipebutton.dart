@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:preshme/shared/providers/flipped_card_provider.dart';
 
 class HomeSwipebutton extends StatelessWidget {
     final CardSwiperController controller;
-  const HomeSwipebutton({super.key, required this.controller});
- 
+    final WidgetRef ref;
+   HomeSwipebutton({super.key, required this.controller, required this.ref});
+
+late final flippedIndex =
+    ref.watch(flippedCardProvider);   
+  
   @override
   Widget build(BuildContext context) {
     
@@ -24,8 +30,9 @@ class HomeSwipebutton extends StatelessWidget {
         icon: Icons.close,
         glowColor:Colors.redAccent,
          onTap: () {
+          flippedIndex != -1?null:
         controller.swipe(
-          CardSwiperDirection.right,
+          CardSwiperDirection.left,
         );
       }
       ),
@@ -35,6 +42,7 @@ class HomeSwipebutton extends StatelessWidget {
       icon : Icons.favorite,
       glowColor: Color(0xFF4DFF88),
        onTap: () {
+        flippedIndex != -1?null:
         controller.swipe(
           CardSwiperDirection.right,
         );

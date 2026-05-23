@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/colors/colors.dart';
+
 class PreshMeAppBar extends StatelessWidget
     implements PreferredSizeWidget {
   const PreshMeAppBar({super.key});
@@ -10,21 +12,21 @@ class PreshMeAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: appbarbackground,
       elevation: 0,
       scrolledUnderElevation: 0,
 
       titleSpacing: 20,
 
       title: RichText(
-        text: const TextSpan(
+        text:  TextSpan(
           children: [
             TextSpan(
               text: 'Presh',
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.w800,
-                color: Colors.white,
+                color: appbarpreshText,
                 letterSpacing: -1,
               ),
             ),
@@ -34,7 +36,7 @@ class PreshMeAppBar extends StatelessWidget
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.w800,
-                color: Color(0xFF9B5CFF),
+                color: appbarmeText,
                 letterSpacing: -1,
               ),
             ),
@@ -59,9 +61,9 @@ class PreshMeAppBar extends StatelessWidget
           child: IconButton(
             onPressed: () {},
 
-            icon: const Icon(
+            icon:  Icon(
               Icons.notifications_none_rounded,
-              color: Colors.white,
+              color: homenotiIconColor,
               size: 28,
             ),
           ),
@@ -73,9 +75,9 @@ class PreshMeAppBar extends StatelessWidget
 
           child: Stack(
             children: [
-              const CircleAvatar(
+               CircleAvatar(
                 radius: 24,
-                backgroundColor: Color(0xFF9B5CFF),
+                backgroundColor: avatarbackground,
 
                 child: CircleAvatar(
                   radius: 22,

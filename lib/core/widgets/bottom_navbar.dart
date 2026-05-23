@@ -40,19 +40,19 @@ class PreshMeBottomNavBar extends StatelessWidget {
                 end: Alignment.bottomRight,
 
                 colors: [
-                  Colors.white.withOpacity(0.10),
-                  Colors.white.withOpacity(0.04),
+                  Colors.white.withValues(alpha: 0.10),
+                  Colors.white.withValues(alpha: 0.04),
                 ],
               ),
 
               border: Border.all(
-                color: Colors.white.withOpacity(0.08),
+                color: Colors.white.withValues(alpha: 0.08),
               ),
 
               boxShadow: [
                 BoxShadow(
                   color: const Color(0xFF9B5CFF)
-                      .withOpacity(0.18),
+                      .withValues(alpha: 0.18),
 
                   blurRadius: 30,
                   spreadRadius: 1,
@@ -120,10 +120,10 @@ class PreshMeBottomNavBar extends StatelessWidget {
               ? LinearGradient(
                   colors: [
                     const Color(0xFF9B5CFF)
-                        .withOpacity(0.25),
+                        .withValues(alpha: 0.25),
 
                     const Color(0xFF4DFF88)
-                        .withOpacity(0.15),
+                        .withValues(alpha: 0.15),
                   ],
                 )
               : null,
@@ -132,7 +132,7 @@ class PreshMeBottomNavBar extends StatelessWidget {
               ? [
                   BoxShadow(
                     color: const Color(0xFF9B5CFF)
-                        .withOpacity(0.35),
+                        .withValues(alpha: 0.35),
 
                     blurRadius: 20,
                     spreadRadius: 1,

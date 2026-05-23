@@ -18,7 +18,7 @@ class MainScreen extends ConsumerWidget {
         ref.watch(navigationProvider);
 
     final screens = [
-      HomePage(),
+      HomePage(ref: ref,),
       //const MessagesScreen(),
       //const SupportScreen(),
     ];
