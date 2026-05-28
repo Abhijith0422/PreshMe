@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:preshme/features/home/views/homepage.dart';
 
 
+import '../../features/messages/views/messagechat.dart';
+import '../../features/support/views/support_screen.dart';
 import '../../shared/providers/nav_provider.dart';
 import 'bottom_navbar.dart';
 
@@ -19,8 +21,8 @@ class MainScreen extends ConsumerWidget {
 
     final screens = [
       HomePage(ref: ref,),
-      //const MessagesScreen(),
-      //const SupportScreen(),
+      MessageChatScreen(),
+      SupportScreen(),
     ];
 
     return Container(
